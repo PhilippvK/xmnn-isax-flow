@@ -1,0 +1,18 @@
+[submodule "cdsl/rv_base"]
+	path = cdsl/rv_base
+	url = https://github.com/PhilippvK/RISCV_ISA_CoreDSL.git
+[submodule "cdsl/rv_xcorev"]
+	path = cdsl/rv_xcorev
+	url = https://github.com/tum-ei-eda/CoreV_ISA_CoreDSL.git
+[submodule "M2-ISA-R"]
+	path = M2-ISA-R
+	url = https://github.com/PhilippvK/M2-ISA-R.git
+[submodule "seal5"]
+	path = seal5
+	url = https://github.com/tum-ei-eda/seal5.git
+[submodule "etiss"]
+	path = etiss
+	url = https://github.com/wysiwyng/etiss.git
+[submodule "etiss_riscv_examples"]
+	path = etiss_riscv_examples
+	url = https://github.com/tum-ei-eda/etiss_riscv_examples_s4e.git
