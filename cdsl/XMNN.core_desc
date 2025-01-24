@@ -79,7 +79,7 @@ InstructionSet XMNN extends RV32I {
              assembly: {"mnn.exthz.b10", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     X[rd] = (unsigned<32>)((unsigned<16>)(unsigned<16>)(unsigned<8>)X[rs1][15:8])) :: ((unsigned<16>)unsigned<16>)(unsigned<8>)X[rs1][7:0])));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((unsigned<8>)X[rs1][15:8]) :: ((unsigned<16>)(unsigned<8>)X[rs1][7:0]));
                  }
              }
         }
@@ -88,7 +88,7 @@ InstructionSet XMNN extends RV32I {
              assembly: {"mnn.exthz.b20", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     X[rd] = (unsigned<32>)((unsigned<16>)(unsigned<16>)(unsigned<8>)X[rs1][23:16])) :: ((unsigned<16>)unsigned<16>)(unsigned<8>)X[rs1][7:0])));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((unsigned<8>)X[rs1][23:16]) :: ((unsigned<16>)(unsigned<8>)X[rs1][7:0]));
                  }
              }
         }
@@ -97,7 +97,7 @@ InstructionSet XMNN extends RV32I {
              assembly: {"mnn.exthz.b30", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     X[rd] = (unsigned<32>)((unsigned<16>)(unsigned<16>)(unsigned<8>)X[rs1][31:24])) :: ((unsigned<16>)unsigned<16>)(unsigned<8>)X[rs1][7:0])));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((unsigned<8>)X[rs1][31:24]) :: ((unsigned<16>)(unsigned<8>)X[rs1][7:0]));
                  }
              }
         }
@@ -106,7 +106,7 @@ InstructionSet XMNN extends RV32I {
              assembly: {"mnn.exthz.b21", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     X[rd] = (unsigned<32>)((unsigned<16>)(unsigned<16>)(unsigned<8>)X[rs1][23:16])) :: ((unsigned<16>)unsigned<16>)(unsigned<8>)X[rs1][15:8])));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((unsigned<8>)X[rs1][23:16]) :: ((unsigned<16>)(unsigned<8>)X[rs1][15:8]));
                  }
              }
         }
@@ -115,7 +115,7 @@ InstructionSet XMNN extends RV32I {
              assembly: {"mnn.exthz.b31", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     X[rd] = (unsigned<32>)((unsigned<16>)(unsigned<16>)(unsigned<8>)X[rs1][31:24])) :: ((unsigned<16>)unsigned<16>)(unsigned<8>)X[rs1][15:8])));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((unsigned<8>)X[rs1][31:24]) :: ((unsigned<16>)(unsigned<8>)X[rs1][15:8]));
                  }
              }
         }
@@ -124,7 +124,7 @@ InstructionSet XMNN extends RV32I {
              assembly: {"mnn.exthz.b32", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     X[rd] = (unsigned<32>)((unsigned<16>)(unsigned<16>)(unsigned<8>)X[rs1][31:24])) :: ((unsigned<16>)unsigned<16>)(unsigned<8>)X[rs1][23:16])));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((unsigned<8>)X[rs1][31:24]) :: ((unsigned<16>)(unsigned<8>)X[rs1][23:16]));
                  }
              }
         }
