@@ -37,7 +37,7 @@ Setup another venv for Seal5
 Generate and apply ETISS patches
 ```sh
 # ./scripts/patch_etiss.sh [ETISS_ARCH]
-./scripts/patch_etiss.sh RV32IMACFDXCoreV
+./scripts/patch_etiss.sh RV32IMACFDXCoreVXMNN
 ```
 
 Build patched ETISS simulator
