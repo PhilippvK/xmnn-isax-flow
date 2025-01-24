@@ -74,5 +74,59 @@ InstructionSet XMNN extends RV32I {
                  }
              }
         }
+        MNN_EXTHZ_B10 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b0 :: 3'b000 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exthz.b10", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][15:8])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][7:0])));
+                 }
+             }
+        }
+        MNN_EXTHZ_B20 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b0 :: 3'b001 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exthz.b20", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][23:16])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][7:0])));
+                 }
+             }
+        }
+        MNN_EXTHZ_B30 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b0 :: 3'b010 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exthz.b30", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][31:24])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][7:0])));
+                 }
+             }
+        }
+        MNN_EXTHZ_B21 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b0 :: 3'b011 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exthz.b21", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][23:16])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][15:8])));
+                 }
+             }
+        }
+        MNN_EXTHZ_B31 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b0 :: 3'b100 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exthz.b31", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][31:24])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][15:8])));
+                 }
+             }
+        }
+        MNN_EXTHZ_B32 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b0 :: 3'b101 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exthz.b32", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][31:24])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][23:16])));
+                 }
+             }
+        }
     }
 }
