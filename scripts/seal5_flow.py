@@ -74,7 +74,7 @@ seal5_flow.initialize(
 
 # Load CoreDSL inputs
 cdsl_files = [
-    EXAMPLES_DIR / "cdsl" / "rv_xmnn" / "XMNN.core_desc",
+    EXAMPLES_DIR / ".." / "cdsl" / "XMNN.core_desc",
 ]
 seal5_flow.load(cdsl_files, verbose=VERBOSE, overwrite=True)
 
@@ -84,13 +84,13 @@ seal5_flow.load(test_files, verbose=VERBOSE, overwrite=True)
 
 # Load YAML inputs
 cfg_files = [
-    EXAMPLES_DIR / "cfg" / "llvm.yml",
-    EXAMPLES_DIR / "cfg" / "filter.yml",
-    EXAMPLES_DIR / "cfg" / "patches.yml",
-    EXAMPLES_DIR / "cfg" / "riscv.yml",
-    EXAMPLES_DIR / "cfg" / "tests.yml",
-    EXAMPLES_DIR / "cfg" / "passes.yml",
-    EXAMPLES_DIR / "cfg" / "git.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "llvm.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "filter.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "patches.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "riscv.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "tests.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "passes.yml",
+    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "git.yml",
     # EXAMPLES_DIR / "cfg" / "mnn/intrinsics.yml",
 ]
 seal5_flow.load(cfg_files, verbose=VERBOSE, overwrite=False)
