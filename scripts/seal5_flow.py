@@ -29,7 +29,9 @@ from seal5.types import PatchStage
 # set_log_level(console_level=logging.DEBUG, file_level=logging.DEBUG)
 set_log_level(console_level="DEBUG", file_level="DEBUG")
 
-EXAMPLES_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
+SCRIPT_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
+INSTALL_DIR = SCRIPT_DIR / ".." / "install" / "seal5_llvm"
+
 # VERBOSE = False
 VERBOSE = bool(int(os.environ.get("VERBOSE", 0)))
 SKIP_PATTERNS = bool(int(os.environ.get("SKIP_PATTERNS", 0)))
@@ -74,7 +76,7 @@ seal5_flow.initialize(
 
 # Load CoreDSL inputs
 cdsl_files = [
-    EXAMPLES_DIR / ".." / "cdsl" / "XMNN.core_desc",
+    SCRIPT_DIR / ".." / "cdsl" / "XMNN.core_desc",
 ]
 seal5_flow.load(cdsl_files, verbose=VERBOSE, overwrite=True)
 
@@ -84,14 +86,14 @@ seal5_flow.load(test_files, verbose=VERBOSE, overwrite=True)
 
 # Load YAML inputs
 cfg_files = [
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "llvm.yml",
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "filter.yml",
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "patches.yml",
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "riscv.yml",
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "tests.yml",
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "passes.yml",
-    EXAMPLES_DIR / ".." / "seal5" / "examples" / "cfg" / "git.yml",
-    # EXAMPLES_DIR / "cfg" / "mnn/intrinsics.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "llvm.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "filter.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "patches.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "riscv.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "tests.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "passes.yml",
+    SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "git.yml",
+    # SCRIPT_DIR / "cfg" / "mnn/intrinsics.yml",
 ]
 seal5_flow.load(cfg_files, verbose=VERBOSE, overwrite=False)
 
@@ -144,7 +146,7 @@ if TEST:
 
 if INSTALL:
     # Install final LLVM
-    seal5_flow.install(verbose=VERBOSE, config=BUILD_CONFIG, enable_ccache=CCACHE)
+    seal5_flow.install(INSTALL_DIR, verbose=VERBOSE, config=BUILD_CONFIG, enable_ccache=CCACHE)
 
 if DEPLOY:
     # Deploy patched LLVM (export sources)
