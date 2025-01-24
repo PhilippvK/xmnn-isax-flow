@@ -16,11 +16,14 @@ git clone https://github.com/PhilippvK/xmnn-isax-flow.git
 git submodule update --init --recursive
 ```
 
+
+### Step-by-step
+
 Download toolchains
 
 ```sh
-./scripts/download_helper.sh install/rv32im_ilp32/ gnu 2024.09.03 rv32im_zicsr_zifencei_ilp32
-./scripts/download_helper.sh install/llvm/ llvm 19.1.6_xcvmem_heuristic
+test -d install/rv32im_ilp32 || ./scripts/download_helper.sh install/rv32im_ilp32/ gnu 2024.09.03 rv32im_zicsr_zifencei_ilp32
+test -d install/llvm || ./scripts/download_helper.sh install/llvm/ llvm 19.1.6_xcvmem_heuristic
 ```
 
 Setup venv for M2-ISA-R
@@ -54,11 +57,19 @@ Generate & build patched LLVM
 Compile target SW
 ```sh
 # ./scripts/compile_example.sh [PROG] [gcc|llvm|seal5_llvm] [ARCH] [ABI]
-./scripts/compile_example.sh seal5_llvm rv32im_xcvmem_xcvmac_xcvalu_xcvbitmanip_xmnn_zicsr_zifencei ilp32
+./scripts/compile_example.sh mnn seal5_llvm rv32im_xcvmem_xcvmac_xcvalu_xcvbitmanip_xmnn_zicsr_zifencei ilp32
 ```
 
 Run program on patched architecture ETISS
 ```sh
 # ./scripts/run_example.sh [PROG] [CPU_ARCH]
-./scripts/run_example.sh hello_world RV32IMACFDXCoreVXMNN
+./scripts/run_example.sh mnn RV32IMACFDXCoreVXMNN
+```
+
+### All-in-one
+
+All steps above combined in one single script:
+
+```sh
+./scripts/full_flow.sh
 ```
