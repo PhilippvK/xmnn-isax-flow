@@ -11,25 +11,66 @@ InstructionSet XMNN extends RV32I {
         //         }
         //     }
         // }
-        MNN_ADD {
-            encoding: 7'b1111111 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
-            assembly: {"mnn.add", "{name(rd)}, {name(rs1)}, {name(rs2)}" };
-            behavior: {
-                if (rd != 0) {
-                    X[rd] = (signed<32>) (X[rs1] + X[rs2]);
-                }
-            }
-        }
-        MNN_PAIR_EXTRACT {
-             encoding: simm12[11:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
-             assembly: {"mnn.pair_extract", "{name(rd)}, {name(rs1)}, {simm12}" };
+        // MNN_ADD {
+        //     encoding: 7'b1111111 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+        //     assembly: {"mnn.add", "{name(rd)}, {name(rs1)}, {name(rs2)}" };
+        //     behavior: {
+        //         if (rd != 0) {
+        //             X[rd] = (signed<32>) (X[rs1] + X[rs2]);
+        //         }
+        //     }
+        // }
+        MNN_EXTHS_B10 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b000 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exths.b10", "{name(rd)}, {name(rs1)}" };
              behavior: {
                  if (rd != 0) {
-                     unsigned<2> pair_sel = (unsigned)simm12;
-                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<4>)X[rs1][pair_sel*8+7:pair_sel*8+4])) :: ((unsigned<16>)(signed<16>)((signed<4>)X[rs1][pair_sel*8+3:pair_sel*8+0])));
-                     // Alternative (needs bugfix in m2isar)
-                     // X[rd][31:16] = ((unsigned<16>)(signed<16>)((signed<4>)X[rs1][pair_sel*8+7:pair_sel*8+4]));
-                     // X[rd][15:0] =  ((unsigned<16>)(signed<16>)((signed<4>)X[rs1][pair_sel*8+3:pair_sel*8+0]));
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][15:8])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][7:0])));
+                 }
+             }
+        }
+        MNN_EXTHS_B20 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b001 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exths.b20", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][23:16])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][7:0])));
+                 }
+             }
+        }
+        MNN_EXTHS_B30 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b010 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exths.b30", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][31:24])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][7:0])));
+                 }
+             }
+        }
+        MNN_EXTHS_B21 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b011 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exths.b21", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][23:16])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][15:8])));
+                 }
+             }
+        }
+        MNN_EXTHS_B31 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b100 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exths.b31", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][31:24])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][15:8])));
+                 }
+             }
+        }
+        MNN_EXTHS_B32 {
+             encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b101 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+             assembly: {"mnn.exths.b32", "{name(rd)}, {name(rs1)}" };
+             behavior: {
+                 if (rd != 0) {
+                     X[rd] = (unsigned<32>)((unsigned<16>)((signed<16>)((signed<8>)X[rs1][31:24])) :: ((unsigned<16>)(signed<16>)((signed<8>)X[rs1][23:16])));
                  }
              }
         }
