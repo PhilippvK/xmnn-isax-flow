@@ -1,2 +1,4 @@
 install/
 tmp/
+cdsl/gen_model/
+cdsl/gen_output/
