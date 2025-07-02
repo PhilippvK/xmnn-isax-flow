@@ -73,3 +73,17 @@ All steps above combined in one single script:
 ```sh
 ./scripts/full_flow.sh
 ```
+
+### Hints
+
+If you have a `ccache/sccache` installation on your system, use the following to drastically speedup your LLVM rebuilds:
+
+```sh
+export CCACHE=1
+```
+
+If you have patched the LLVM at least once, some stages in the Seal5 flow can be skipped like this:
+
+```sh
+export PREPATCHED=1
+```

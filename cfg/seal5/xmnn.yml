@@ -1,0 +1,17 @@
+---
+intrinsics:
+  intrinsics:
+  - instr_name: MNN_MAC
+    intrinsic_name: mac
+    ret_type: i32
+    ret_signed: true
+    args:
+    - arg_name: rd
+      arg_type: i32
+      signed: true
+    - arg_name: rs1
+      arg_type: i32
+      signed: true
+    - arg_name: rs2
+      arg_type: i32
+      signed: true

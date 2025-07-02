@@ -13,6 +13,8 @@ TOOLCHAIN=${2:-seal5_llvm}
 ARCH=${3:-rv32im_xcvmem_xcvmac_xcvalu_xcvbitmanip_xmnn_zicsr_zifencei}
 ABI=${4:-ilp32}
 
+BUILD_TYPE=Release
+
 RISCV_GCC_NAME=riscv32-unknown-elf
 RISCV_GCC_PREFIX=$(pwd)/install/rv32im_ilp32
 
@@ -34,7 +36,7 @@ fi
 
 cd etiss_riscv_examples/
 test -d build/ && rm -rf build/ || :
-cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$(pwd)/rv32gc-llvm-toolchain.cmake -DCMAKE_INSTALL_PREFIX=$(pwd)/build/install -DRISCV_ARCH=$ARCH -DRISCV_ABI=$ABI -DRISCV_TOOLCHAIN_PREFIX=$RISCV_GCC_PREFIX -DRISCV_TOOLCHAIN_BASENAME=$RISCV_GCC_NAME ..
+cmake -S . -B build -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_TOOLCHAIN_FILE=$(pwd)/rv32gc-llvm-toolchain.cmake -DCMAKE_INSTALL_PREFIX=$(pwd)/build/install -DRISCV_ARCH=$ARCH -DRISCV_ABI=$ABI -DRISCV_TOOLCHAIN_PREFIX=$RISCV_GCC_PREFIX -DRISCV_TOOLCHAIN_BASENAME=$RISCV_GCC_NAME ..
 cmake --build build -j$(nproc) -t $PROG
 cmake --install build
 cd -
