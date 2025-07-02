@@ -93,7 +93,7 @@ cfg_files = [
     SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "tests.yml",
     SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "passes.yml",
     SCRIPT_DIR / ".." / "seal5" / "examples" / "cfg" / "git.yml",
-    # SCRIPT_DIR / "cfg" / "mnn/intrinsics.yml",
+    SCRIPT_DIR / ".." / "cfg" / "seal5" / "xmnn.yml",
 ]
 seal5_flow.load(cfg_files, verbose=VERBOSE, overwrite=False)
 

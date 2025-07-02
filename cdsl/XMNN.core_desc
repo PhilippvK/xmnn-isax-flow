@@ -20,6 +20,15 @@ InstructionSet XMNN extends RV32I {
         //         }
         //     }
         // }
+        MNN_MAC {
+            encoding: 7'b0111111 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
+            assembly: {"mnn.mac", "{name(rd)}, {name(rs1)}, {name(rs2)}" };
+            behavior: {
+                if (rd != 0) {
+                    X[rd] = ((signed<32>)X[rd] + ((signed)X[rs1] * (signed)X[rs2]))[31:0];
+                }
+            }
+        }
         MNN_EXTHS_B10 {
              encoding: 7'b1111111 :: 1'b0 :: 1'b1 :: 3'b000 :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
              assembly: {"mnn.exths.b10", "{name(rd)}, {name(rs1)}" };
